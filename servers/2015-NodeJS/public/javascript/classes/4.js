@@ -24,13 +24,13 @@ class Solution4 {
 
     calculateFirst(input, zeroes){
         let counter = 1;
-        console.log("arg ", arguments)   
+        
         while (counter++) {		
             
             let hash = md5(input + counter);
             
             if(hash.slice(0, zeroes.length) === zeroes){
-                console.log(hash, hash.slice(0, zeroes.length))
+                
                 return counter
             }
         }
