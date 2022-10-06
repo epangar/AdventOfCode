@@ -1,17 +1,18 @@
 const fs = require('fs');
 
-module.exports = function (filePath){
+module.exports = function(filePath){
+    console.log("Inside readInputFile")
     
-    fs.readFile(filePath, 'utf-8', (error, content) => {
-        if (error) {
-            throw error
-        };
+    return new Promise((resolve, reject)=>{
         
-        console.log("Inside readInputFile, content = ", content)
-        this.answer = content;
-        process.stdout.write(content);
-        console.log("Inside readInputFile, answer = ", answer)
-        //return answer;
-    });
-    
+        return fs.readFile(filePath, 'utf-8', (error, content) => {
+            if (error) {
+                throw error
+            } 
+            console.log("Inside readInputFile.readFile, content = ", content)
+            //process.stdout.write(content);
+            return resolve(content);
+            
+        })
+    })
 }
