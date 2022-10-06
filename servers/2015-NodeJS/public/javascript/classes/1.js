@@ -1,37 +1,45 @@
-const readInputFile = require( '../utils/readInputFile');
 const getFilePaths = require('../utils/getFilePaths');
-
+const fillInput = require('../utils/fillInput');
 
 class Solution1 {
     constructor(){
         this.filePathExample = getFilePaths(1).filePathExample;
-        this.filePath1 = getFilePaths(1).filePath1; //= filePath1;
-        this.filePath2 = getFilePaths(1).filePath2; //= filePath2;
-        this.inputExample = this.fillInput(this.filePathExample, 'inputExample');
-        //this.input1 = readInputFile(this.filePath1);
-        //this.input2 = readInputFile(this.filePath2);
-        this.example1 = this.calculateFirst(this.inputExample);
-        //this.example2 = this.calculateSecond(this.inputExample);
-        this.part1 =  90 || this.calculateFirst(this.input1);
-        this.part2 = 123 || this.calculateSecond(this.input2); 
+        this.filePath1 = getFilePaths(1).filePath1;
+        this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
+        .then(() => {
+            this.example1 = this.calculateFirst(this.inputExample);
+        });
         
-        setTimeout(()=>{console.log(">>>>>> this = ", this)}, 4000)
-    }
+        this.input = fillInput(this.filePath1, this, 'input')
+        .then(() => {
+            this.part1 = this.calculateFirst(this.input);
+            this.part2 = this.calculateSecond(this.input);
+        });
 
-    fillInput(input, prop){
-        return readInputFile(input, prop).then(data =>{
-            this[prop] = data;
-        })
     }
-
 
     calculateFirst(input){
-        
-        
+        return [...input]
+                .map(char => char === '(' ? 1 : -1)
+                .reduce((a,b)=>a+b)
     }
 
     calculateSecond(input){
+        let position = 0;
         
+        for(let i = 0; i <= input.length; i++){
+            let current = input[i];
+            
+            if(current === '('){
+                position++;
+            } else {
+                position--
+            }
+            
+            if(position < 0){
+                return i+1;
+            }
+        }
     }
 }
 
