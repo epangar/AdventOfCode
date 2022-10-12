@@ -3,18 +3,17 @@ const router = express.Router();
 const _ = require("lodash");
 const Solution = require("../public/javascript/classes/Solution");
 const solution = new Solution();
-//console.log("solution = ", solution);
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-    const keys = Object.keys(solution).map((key, position) => {
-        const numberDay = position + 1
-        return {
-            "name" : `Day ${numberDay}`,
-            "number": numberDay,
-            "url" : `/solutions/${numberDay}`
-    }});
-    console.log(keys)
+   const keys = Object.keys(solution).map((key, position) => {
+      const numberDay = position + 1
+      return {
+          "name" : `Day ${numberDay}`,
+          "number": numberDay,
+          "url" : `/solutions/${numberDay}`
+      }
+    });
     res.render('index', {
     solutions : keys
   })
