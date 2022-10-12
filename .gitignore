@@ -47,3 +47,9 @@
 # Server
 /servers/2015-NodeJS/node_modules
 /servers/2016-TsNode/node_modules
+
+
+#Server .envs
+/servers/2015-NodeJS/.env
+/servers/2016-TsNode/.env
+
