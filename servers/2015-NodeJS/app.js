@@ -14,7 +14,6 @@ const PORT = process.env.NODEJS_PORT || 3000;
 
 app.use(cors());
 
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
