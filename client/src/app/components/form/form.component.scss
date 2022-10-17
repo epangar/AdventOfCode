@@ -1,0 +1,14 @@
+.form {
+  border: 1px solid #00cc00;
+  display: grid;
+  text-align: center;
+
+  &__options{
+    font-family: Source Code Pro;
+  }
+
+  &__button{
+    width: 150px;
+    margin: auto;
+  }
+}
