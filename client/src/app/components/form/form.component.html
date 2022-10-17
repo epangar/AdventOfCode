@@ -1,0 +1,32 @@
+<form class="form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+
+  <label for="year" class="green__text" >Select a year:
+    <select name="year" id="years" required [(ngModel)]="defaultYear">
+      <option
+      *ngFor= "let year of years; index as i"
+      [value]="year"
+
+      >{{year}}</option>
+    </select>
+  </label>
+  <label for="day" class="green__text" >Select a day:
+    <select name="day" id="days" required [(ngModel)]="defaultDay">
+      <option
+      class="form__options"
+      *ngFor= "let day of days; index as i"
+      [value]="day"
+      >{{day}}</option>
+    </select>
+  </label>
+
+  <button
+  class="form__button"
+  type="submit"
+  [disabled]="!form.valid">Select this exercise</button>
+
+</form>
+
+
+<app-results  ></app-results>
+
+
