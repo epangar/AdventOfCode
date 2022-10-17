@@ -6,12 +6,12 @@ const solution = new Solution();
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-   const keys = Object.keys(solution).map((key, position) => {
-      const numberDay = position + 1
+   const keys = new Array(25).fill(1).map((key, position) => {
+      const numberDay = key + position
       return {
           "name" : `Day ${numberDay}`,
           "number": numberDay,
-          "url" : `/solutions/${numberDay}`
+          "url" : `/2015/${numberDay}`
       }
     });
     res.render('index', {
@@ -24,12 +24,17 @@ router.get('/', (req, res, next) => {
 // Retrive DETAIL
 router.get("/:id", (req, res, next) => {
   const id = req.params.id,
-        day = `day${id}`;
-        
-  res.render('solution', {
-    currentDay: id,
-    mySolution: solution[day]
+        day = `day${id}`,
+        year = solution.year,
+        daySolution = solution.getDay(day);
+
+  res.json({
+    year: year,
+    day: parseInt(id),
+    part1: daySolution  ? daySolution.part1 : 0, 
+    part2: daySolution  ? daySolution.part2 : 0
   })
+        
 });
 
 
