@@ -73,6 +73,6 @@ app.listen(PORT, () => {
 
 const solutionRoutes = require("./routes/solutions-routes");
 app.use("/", solutionRoutes);
-app.use("/solutions", solutionRoutes);
+app.use("/2015", solutionRoutes);
 
 module.exports = app;
