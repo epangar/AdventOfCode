@@ -3,7 +3,7 @@ const fillInput = require('../utils/fillInput');
 
 class Solution3 {
     constructor(){
-        this.filePathExample = getFilePaths(3).filePathExample;
+        //this.filePathExample = getFilePaths(3).filePathExample;
         this.filePath1 = getFilePaths(3).filePath1;
         this.directions = {
             "^":[1,0],
@@ -13,11 +13,11 @@ class Solution3 {
         }
         
 
-        this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
+        /* this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
         .then(() => {
             this.example1 = this.calculateFirst(this.inputExample);
             
-        });
+        }); */
         
        this.input = fillInput(this.filePath1, this, 'input')
         .then(() => {
