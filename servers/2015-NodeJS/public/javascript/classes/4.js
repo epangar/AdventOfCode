@@ -6,13 +6,13 @@ const md5 = require('md5');
 
 class Solution4 {
     constructor(){
-        this.filePathExample = getFilePaths(4).filePathExample;
+        //this.filePathExample = getFilePaths(4).filePathExample;
         this.filePath1 = getFilePaths(4).filePath1;
-        this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
+        /* this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
         .then(() => {
             this.example1 = this.calculateFirst(this.inputExample, '00000');
             this.example2 = this.calculateSecond(this.inputExample, '000000');
-        });
+        }); */
         
         this.input = fillInput(this.filePath1, this, 'input')
         .then(() => {
