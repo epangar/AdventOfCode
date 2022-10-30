@@ -3,15 +3,15 @@ const fillInput = require('../utils/fillInput');
 
 class Solution2 {
     constructor(){
-        this.filePathExample = getFilePaths(2).filePathExample;
+        //this.filePathExample = getFilePaths(2).filePathExample;
         this.filePath1 = getFilePaths(2).filePath1;
 
-        this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
+        /* this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
         .then(() => {
             this.inputExample = this.parseInput(this.inputExample);
             this.example1 = this.calculateFirst(this.inputExample);
         });
-        
+         */
         
        this.input = fillInput(this.filePath1, this, 'input')
         .then(() => {
