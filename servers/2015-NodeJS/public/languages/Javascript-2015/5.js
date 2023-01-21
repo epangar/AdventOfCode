@@ -1,10 +1,10 @@
-const getFilePaths = require('../utils/getFilePaths');
-const fillInput = require('../utils/fillInput');
+const getFilePaths = require('../../utils/getFilePaths');
+const fillInput = require('../../utils/fillInput');
 
 class Solution5 {
     constructor(){
-        this.filePathExample = getFilePaths(5).filePathExample;
-        this.filePath1 = getFilePaths(5).filePath1;
+        this.filePathExample = getFilePaths(2015,5).filePathExample;
+        this.filePath1 = getFilePaths(2015,5).filePath1;
         this.vowels = 'aeiou';
         this.strings = ['ab', 'cd', 'pq', 'xy'];
         this.inputExample = fillInput(this.filePathExample, this, 'inputExample')

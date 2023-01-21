@@ -1,10 +1,10 @@
-const getFilePaths = require('../utils/getFilePaths');
-const fillInput = require('../utils/fillInput');
+const getFilePaths = require('../../utils/getFilePaths');
+const fillInput = require('../../utils/fillInput');
 
 class Solution3 {
     constructor(){
         //this.filePathExample = getFilePaths(3).filePathExample;
-        this.filePath1 = getFilePaths(3).filePath1;
+        this.filePath1 = getFilePaths(2015,3).filePath1;
         this.directions = {
             "^":[1,0],
             "v":[-1,0],

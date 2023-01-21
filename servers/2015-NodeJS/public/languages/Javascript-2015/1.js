@@ -1,10 +1,10 @@
-const getFilePaths = require('../utils/getFilePaths');
-const fillInput = require('../utils/fillInput');
+const getFilePaths = require('../../utils/getFilePaths');
+const fillInput = require('../../utils/fillInput');
 
 class Solution1 {
     constructor(){
-        //this.filePathExample = getFilePaths(1).filePathExample;
-        this.filePath1 = getFilePaths(1).filePath1;
+        //this.filePathExample = getFilePaths(2015,1).filePathExample;
+        this.filePath1 = getFilePaths(2015,1).filePath1;
         /* this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
         .then(() => {
             this.example1 = this.calculateFirst(this.inputExample);

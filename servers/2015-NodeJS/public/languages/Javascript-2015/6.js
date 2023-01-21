@@ -29,8 +29,8 @@ class Light{
 
 class Solution6 {
     constructor(){
-        this.filePathExample = getFilePaths(6).filePathExample;
-        this.filePath1 = getFilePaths(6).filePath1;
+        this.filePathExample = getFilePaths(2015,6).filePathExample;
+        this.filePath1 = getFilePaths(2015,6).filePath1;
         
         this.dummyGrid = this.makeGrid(5,5);
         //this.grid = this.makeGrid(1000,1000);

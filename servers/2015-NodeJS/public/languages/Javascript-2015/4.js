@@ -1,13 +1,13 @@
 /* 'use strict'; */
-const getFilePaths = require('../utils/getFilePaths');
-const fillInput = require('../utils/fillInput');
+const getFilePaths = require('../../utils/getFilePaths');
+const fillInput = require('../../utils/fillInput');
 const md5 = require('md5');
 
 
 class Solution4 {
     constructor(){
         //this.filePathExample = getFilePaths(4).filePathExample;
-        this.filePath1 = getFilePaths(4).filePath1;
+        this.filePath1 = getFilePaths(2015,4).filePath1;
         /* this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
         .then(() => {
             this.example1 = this.calculateFirst(this.inputExample, '00000');
