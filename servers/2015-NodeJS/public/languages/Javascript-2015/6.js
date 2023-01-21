@@ -1,5 +1,5 @@
-const getFilePaths = require('../utils/getFilePaths');
-const fillInput = require('../utils/fillInput');
+const getFilePaths = require('../../utils/getFilePaths');
+const fillInput = require('../../utils/fillInput');
 
 class Light{
     constructor(){
