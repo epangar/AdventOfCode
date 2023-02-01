@@ -8,38 +8,35 @@ const {spawn} = require('child_process');
 
 
 /* GET home page */
-/* router.get('/', (req, res, next) => {
-   const keys = new Array(25).fill(1).map((key, position) => {
-      const numberDay = key + position
-      return {
-          "name" : `Day ${numberDay}`,
-          "number": numberDay,
-          "url" : `/2015/${numberDay}`
-      }
-    });
-    res.render('index', {
-    solutions : keys
-  })
+router.get('/', (req, res, next) => {
+  res.json({
+    year: 2015,
+    day: 1,
+    part1: 0, 
+    part2: 0
+  }) 
 });
- */
+
 
 // Retrieve Year + day
 router.get("/:year/:id", (req, res, next) => {
-  const id = req.params.id,
-        day = `day${id}`,
-        year = req.params.year,
-        language = yearLanguage[year],
-        solutionKey = `${language}_${year}`,
-        yearSolution = global.getYear(solutionKey),
-        daySolution = yearSolution.getDay(day);
-        
-  res.json({
-    year: year,
-    day: parseInt(id),
-    part1: daySolution  ? daySolution.part1 : 0, 
-    part2: daySolution  ? daySolution.part2 : 0
-  })
-        
+  if(req.params.id !== 'version'){
+
+    const id = req.params.id,
+          day = `day${id}`,
+          year = req.params.year,
+          language = yearLanguage[year],
+          solutionKey = `${language}_${year}`,
+          yearSolution = global.getYear(solutionKey),
+          daySolution = yearSolution.getDay(day)
+          
+    res.json({
+      year: year,
+      day: parseInt(id),
+      part1: daySolution.part1 ? daySolution.part1 : 0, 
+      part2: daySolution.part2 ? daySolution.part2 : 0
+    }) 
+  }      
 });
 
 
