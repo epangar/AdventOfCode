@@ -1,5 +1,4 @@
 const path = require('path');
-const yearLanguage = require('../utils/year-language');
 
 module.exports = function(numberOfDay, directory){
 
