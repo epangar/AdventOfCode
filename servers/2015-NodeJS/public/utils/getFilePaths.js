@@ -1,8 +1,10 @@
 const path = require('path');
+const yearLanguage = require('../utils/year-language');
 
-module.exports = function(year, numberOfDay){
+module.exports = function(numberOfDay, directory){
+
     return {
-        filePathExample : path.join(process.cwd(), `/public/inputs/${year}/${numberOfDay}.example.txt`),
-        filePath1 : path.join(process.cwd(), `/public/inputs/${year}/${numberOfDay}.txt`)
+        filePathExample : path.join(directory, `inputs/${numberOfDay}.example.txt`),
+        filePath1 : path.join(directory, `inputs/${numberOfDay}.txt`)
     }
 }
