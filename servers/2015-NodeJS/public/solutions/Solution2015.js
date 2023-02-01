@@ -1,4 +1,4 @@
-const imports = require('./Imports_2015')
+const imports = require('../exercises/Javascript-2015/Imports_2015')
 
 class Solution2015 {
     constructor(){

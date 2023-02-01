@@ -6,7 +6,7 @@ const Solution5 = require('./5');
 const Solution6 = require('./6');
 
 
-const Imports  = {
+const Imports_2015  = {
     
     day1 : new Solution1(),
     day2 : new Solution2(),
@@ -17,4 +17,4 @@ const Imports  = {
     
 }
 
-module.exports = Imports
+module.exports = Imports_2015
