@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 
-class Day2:
+class Day3:
     def __init__(self):
         self.first = self.calculate_first()
         self.second = self.calculate_second()
     
     def calculate_first(self):
-        return 3
+        return 5
 
     def calculate_second(self):
-        return 4
+        return 6
 
-print(Day2().first, Day2().second)
+print(Day3().first,  Day3().second)

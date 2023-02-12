@@ -11,4 +11,4 @@ class Day1:
     def calculate_second(self):
         return 2
 
-print({"part1": Day1().first, "part2": Day1().second})
+print( Day1().first, Day1().second)
