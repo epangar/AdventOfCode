@@ -27,19 +27,39 @@ class Light{
     }
 }
 
+class SecondLight {
+    constructor(){
+        this.brightness = 0;
+    }
+
+    toggle(){
+        this.brightness += 2;
+    }
+
+    turnOff(){
+        if(this.brightness >0){
+            this.brightness--
+        } else {
+            return;
+        }     
+    }
+
+    turnOn(){
+        this.brightness++
+    }
+}
+
 class Solution6 {
     constructor(){
         this.filePathExample = getFilePaths(6,__dirname).filePathExample;
         this.filePath1 = getFilePaths(6,__dirname).filePath1;
         
-        this.dummyGrid = this.makeGrid(5,5);
-        //this.grid = this.makeGrid(1000,1000);
+        this.dummyGrid = this.makeGrid(5,5,1);
         
         this.inputExample = fillInput(this.filePathExample, this, 'inputExample')
         .then(() => {
             this.inputExample = this.parseInput(this.inputExample);
-            //console.log("this.inputExample = ",this.inputExample)
-            const GRID = this.makeGrid(5, 5)
+            const GRID = this.makeGrid(5, 5,1)
             this.example1 =  this.calculateFirst(GRID, this.inputExample);
         });
         
@@ -47,12 +67,10 @@ class Solution6 {
        this.input = fillInput(this.filePath1, this, 'input')
         .then(() => {
             this.input = this.parseInput(this.input);
-            this.GRID = this.makeGrid(1000, 1000);
-            //console.log(this.input)
-            //console.log(GRID)
+            this.GRID = this.makeGrid(1000, 1000, 1);
             this.part1 = this.calculateFirst(this.GRID, this.input);
-            console.log(this.part1)
-            //this.part2 = this.calculateSecond(this.input); 
+            this.GRID2 = this.makeGrid(1000, 1000, 2)
+            this.part2 = this.calculateSecond(this.GRID2,this.input); 
         });
     }
 
@@ -79,12 +97,16 @@ class Solution6 {
         })
     }
 
-    makeGrid(vertical, horizontal){
+    makeGrid(vertical, horizontal, exercise){
         const grid = [];
         for (let i = 0; i < vertical; i++) {
           const row = [];
           for (let j = 0; j < horizontal; j++) {
-            row.push(new Light());
+            if(exercise === 1){
+                row.push(new Light());
+            } else if(exercise === 2){
+                row.push(new SecondLight());
+            }
           }
           grid.push(row);
         }
@@ -92,8 +114,6 @@ class Solution6 {
     }
 
     calculateFirst(grid, instructions){
-        //console.log("start grid = ", grid)
-        //we must return .map() of instructions
         instructions.forEach((instruction) => {
 
             let startH = instruction.start[1], 
@@ -104,9 +124,6 @@ class Solution6 {
 
             for(let i = startH; i <= endH; i++){
                 for(let j = startV; j <= endV; j++){
-
-                    //console.log(`Changing:\n [${i}][${j}] = ${grid[i][j].lit}`)
-                    
                     if(method === 'toggle'){
                         grid[i][j].toggle();
                     } else if (method === 'turn off'){
@@ -114,8 +131,6 @@ class Solution6 {
                     } else {
                         grid[i][j].turnOn();
                     } 
-
-                    //console.log(`Changed:\n [${i}][${j}] = ${grid[i][j].lit}`)
                 }
             }
         })
@@ -123,19 +138,34 @@ class Solution6 {
         
         const ANSWER = grid.map(row => row.filter(light => light.lit).length)
         
-        console.log("answer so far = ", ANSWER)
         return ANSWER.reduce((a,b)=>a+b)
-
-        
-
-       /*  let ANSWER = grid.reduce((count, row)=>{
-            return count + row.filter((l) => l.lit).length
-        },0)
-        return ANSWER */
     }
 
     calculateSecond(grid, instructions){
-        
+        instructions.forEach((instruction) => {
+
+            let startH = instruction.start[1], 
+                startV = instruction.start[0], 
+                endH = instruction.end[1],
+                endV = instruction.end[0],
+                method = instruction.method;
+
+            for(let i = startH; i <= endH; i++){
+                for(let j = startV; j <= endV; j++){
+                    if(method === 'toggle'){
+                        grid[i][j].toggle();
+                    } else if (method === 'turn off'){
+                        grid[i][j].turnOff();
+                    } else {
+                        grid[i][j].turnOn();
+                    } 
+                }
+            }
+        })
+        return grid.reduce((acc, row) => {
+            const rowBrightness = row.reduce((rowAcc, light) => rowAcc + light.brightness, 0);
+            return acc + rowBrightness;
+          }, 0)
     }
 }
 
