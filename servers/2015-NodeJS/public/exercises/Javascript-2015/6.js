@@ -44,7 +44,7 @@ class Solution6 {
         });
         
         
-       /* this.input = fillInput(this.filePath1, this, 'input')
+       this.input = fillInput(this.filePath1, this, 'input')
         .then(() => {
             this.input = this.parseInput(this.input);
             this.GRID = this.makeGrid(1000, 1000);
@@ -52,8 +52,8 @@ class Solution6 {
             //console.log(GRID)
             this.part1 = this.calculateFirst(this.GRID, this.input);
             console.log(this.part1)
-            /* this.part2 = this.calculateSecond(this.input); 
-        }); */
+            //this.part2 = this.calculateSecond(this.input); 
+        });
     }
 
     parseInput(str){
@@ -80,7 +80,15 @@ class Solution6 {
     }
 
     makeGrid(vertical, horizontal){
-        return new Array(vertical).fill(new Array(horizontal).fill().map(u => new Light()))
+        const grid = [];
+        for (let i = 0; i < vertical; i++) {
+          const row = [];
+          for (let j = 0; j < horizontal; j++) {
+            row.push(new Light());
+          }
+          grid.push(row);
+        }
+        return grid;
     }
 
     calculateFirst(grid, instructions){
@@ -113,17 +121,17 @@ class Solution6 {
         })
 
         
-        /* const ANSWER = grid.map(row => row.filter(light => light.lit === true).length)
+        const ANSWER = grid.map(row => row.filter(light => light.lit).length)
         
         console.log("answer so far = ", ANSWER)
-        return ANSWER.reduce((a,b)=>a+b) */
+        return ANSWER.reduce((a,b)=>a+b)
 
         
 
-        let ANSWER = grid.reduce((count, row)=>{
+       /*  let ANSWER = grid.reduce((count, row)=>{
             return count + row.filter((l) => l.lit).length
         },0)
-        return ANSWER
+        return ANSWER */
     }
 
     calculateSecond(grid, instructions){
