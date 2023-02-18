@@ -11,18 +11,26 @@ const Imports1019Promise = new Promise((resolve, reject)=>{
         const python = ChildProcess.spawn('python3', 
         [pythonScriptPath],
         {stdio: "pipe"})
-    
+
         
         python.stdout.on('data', (data) =>{
+            
+            console.log("Inside stdout, #", i, " , data = ", data.toString())
             const modelData = data.toString().trim().split(" ").map(s => parseInt(s))
             
             modelData.forEach((n, p) => {
                 const key = `part${p+1}`
                 currentDaySolutions[key] = n
             });
+
+            console.log("MODEL DATA = ", modelData)
             
             Imports_2019[`day${i}`] = currentDaySolutions
         })
+
+        python.stderr.on('data', (data) => {
+            console.error(`stderr: ${data}`);
+        });
         
         python.on('close', (code) => {
             if (code !== 0) {
